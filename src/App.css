@@ -1,0 +1,549 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #18283d;
+  background: #f3f5f8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --navy: #14243a;
+  --navy-light: #203957;
+  --navy-soft: #eaf0f7;
+  --gold: #c9a66b;
+  --gold-light: #f4ead8;
+  --orange: #d98542;
+  --text: #18283d;
+  --muted: #78869a;
+  --border: #e6eaf0;
+  --surface: #ffffff;
+  --background: #f3f5f8;
+  --success: #26845d;
+  --danger: #c65353;
+  --shadow: 0 8px 28px rgba(20, 36, 58, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--background);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  transition: background .2s ease, color .2s ease,
+    border-color .2s ease, box-shadow .2s ease,
+    transform .2s ease;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(201, 166, 107, .35);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: not-allowed !important;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Estructura principal */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  background: var(--background);
+}
+
+/* Menú lateral */
+.app-sidebar {
+  width: 255px;
+  min-width: 255px;
+  min-height: 100vh;
+  padding: 25px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(201,166,107,.15), transparent 35%),
+    linear-gradient(180deg, #172b44 0%, #101e31 100%);
+  border-right: 1px solid rgba(255,255,255,.06);
+  box-shadow: 8px 0 28px rgba(15, 30, 49, .08);
+}
+
+.app-sidebar .brand-logo {
+  color: #e3c18a;
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  padding: 12px 8px 28px;
+}
+
+.app-sidebar button {
+  border: 1px solid transparent !important;
+  border-radius: 11px !important;
+  padding: 13px 15px !important;
+  color: #d9e2ed !important;
+  background: transparent !important;
+  text-align: left;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.app-sidebar button:hover {
+  color: #fff !important;
+  background: rgba(255,255,255,.08) !important;
+}
+
+.app-sidebar button.active {
+  color: #fff !important;
+  background: linear-gradient(110deg, #bd9255, #d5b77f) !important;
+  box-shadow: 0 5px 15px rgba(201,166,107,.2);
+  font-weight: 700;
+}
+
+/* Área de contenido */
+.app-main {
+  flex: 1;
+  min-width: 0;
+  padding: 32px;
+}
+
+.app-header {
+  padding-bottom: 22px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  color: var(--navy);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(25px, 3vw, 34px);
+  letter-spacing: -.5px;
+}
+
+.app-header p {
+  color: var(--muted);
+}
+
+/* Tarjetas: también aplica a las tarjetas que actualmente usan estilos inline */
+.app-main div[style*="border-radius: 14px"],
+.app-main div[style*="border-radius: 14px;"] {
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.app-main h2 {
+  color: var(--navy);
+  letter-spacing: -.5px;
+}
+
+.app-main h3 {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+/* Botones del contenido */
+.app-main button {
+  border-radius: 9px;
+  font-weight: 600;
+}
+
+.app-main button[style*="background: rgb(233, 120, 36)"],
+.app-main button[style*="background: rgb(233, 120, 36);"] {
+  background: linear-gradient(120deg, #b58b50, #d1ad73) !important;
+  color: #14243a !important;
+  box-shadow: 0 4px 12px rgba(181,139,80,.18);
+}
+
+.app-main button:hover:not(:disabled) {
+  filter: brightness(.97);
+}
+
+/* Campos */
+.app-main input,
+.app-main select,
+.app-main textarea,
+#root form input {
+  border: 1px solid #dce3eb !important;
+  border-radius: 9px !important;
+  background: #fff !important;
+  color: var(--text) !important;
+  min-height: 42px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.app-main input:focus,
+.app-main select:focus,
+.app-main textarea:focus,
+#root form input:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgba(201,166,107,.14);
+  outline: none;
+}
+
+/* Tablas */
+.app-main table {
+  width: 100%;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  color: var(--text);
+}
+
+.app-main thead th {
+  color: #63738a;
+  background: #f5f7fa;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  font-weight: 800;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.app-main tbody td {
+  color: #34445a;
+  border-bottom: 1px solid #edf0f4 !important;
+}
+
+.app-main tbody tr:hover {
+  background: #fafbfd;
+}
+
+/* Mensajes y estados */
+.app-main [style*="color: rgb(192, 57, 43)"] {
+  color: var(--danger) !important;
+}
+
+.app-main [style*="color: rgb(33, 140, 85)"] {
+  color: var(--success) !important;
+}
+
+/* Pantalla de acceso */
+.login-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(201,166,107,.18), transparent 30%),
+    linear-gradient(135deg, #101e31, #1c3552);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 38px !important;
+  background: #fff;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 20px !important;
+  box-shadow: 0 24px 70px rgba(0,0,0,.22) !important;
+}
+
+.login-card h1 {
+  color: var(--navy);
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+}
+
+/* Componente Clientes */
+.app-main .clientes-container {
+  width: 100%;
+}
+
+/* Scroll horizontal para tablas y pantallas pequeñas */
+.app-main {
+  overflow-x: auto;
+}
+
+@media (max-width: 900px) {
+  .app-sidebar {
+    width: 210px;
+    min-width: 210px;
+  }
+
+  .app-main {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-shell {
+    display: block;
+  }
+
+  .app-sidebar {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .app-sidebar .brand-logo {
+    width: 100%;
+    padding: 8px 5px 12px;
+  }
+
+  .app-sidebar button {
+    flex: 1 1 135px;
+    text-align: center !important;
+    padding: 10px !important;
+  }
+
+  .app-sidebar > div[style*="flex: 1"] {
+    display: none;
+  }
+
+  .app-main {
+    padding: 17px;
+  }
+
+  .app-header {
+    margin-bottom: 18px;
+  }
+
+  .login-card {
+    padding: 25px !important;
+  }
+
+  .app-main table {
+    min-width: 620px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
+
+/* Ajustes para los estilos que vienen desde App.jsx */
+
+.app-shell {
+  background: var(--background) !important;
+}
+
+.app-sidebar {
+  width: 255px !important;
+  min-width: 255px !important;
+  padding: 25px 18px !important;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(201,166,107,.15), transparent 35%),
+    linear-gradient(180deg, #172b44 0%, #101e31 100%) !important;
+}
+
+.app-sidebar .brand-logo {
+  color: #e3c18a !important;
+  font-family: 'Playfair Display', serif !important;
+  font-size: 27px !important;
+  font-weight: 700 !important;
+}
+
+.app-main {
+  padding: 32px !important;
+  background: var(--background) !important;
+}
+
+.app-header h1 {
+  color: var(--navy) !important;
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(25px, 3vw, 34px) !important;
+}
+
+.app-main button[style*="background: rgb(233, 120, 36)"] {
+  background: linear-gradient(120deg, #b58b50, #d1ad73) !important;
+  color: #14243a !important;
+}
+
+@media (max-width: 680px) {
+  .app-sidebar {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 14px !important;
+  }
+
+  .app-main {
+    padding: 17px !important;
+  }
+}
+
+/* ======================================
+   POLLO PRO - ACABADO EJECUTIVO PREMIUM
+====================================== */
+
+:root {
+  --premium-navy: #14243a;
+  --premium-blue: #203957;
+  --premium-gold: #c9a66b;
+  --premium-white: #ffffff;
+  --premium-bg: #f4f6f9;
+  --premium-text: #243247;
+  --premium-muted: #8490a1;
+  --premium-border: #e7ebf0;
+  --premium-shadow: 0 8px 26px rgba(20,36,58,.07);
+}
+
+/* Fondo general */
+.app-shell,
+.app-main {
+  background: var(--premium-bg) !important;
+  color: var(--premium-text);
+}
+
+/* Menú lateral */
+.app-sidebar {
+  background: linear-gradient(
+    180deg,
+    #172b44,
+    #0c192a
+  ) !important;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+
+/* Nombre de la empresa */
+.brand-logo {
+  color: #e4c58f !important;
+  letter-spacing: 1px;
+}
+
+/* Navegación */
+.app-sidebar button {
+  border-radius: 12px !important;
+  transition: all .25s ease;
+}
+
+.app-sidebar button:hover,
+.app-sidebar button.active {
+  background: linear-gradient(
+    110deg,
+    #c9a66b,
+    #e5cc9e
+  ) !important;
+  color: #14243a !important;
+}
+
+/* Encabezado */
+.app-header {
+  background: #fff;
+  border: 1px solid var(--premium-border);
+  border-radius: 18px;
+  box-shadow: var(--premium-shadow);
+  padding: 22px !important;
+}
+
+.app-header h1 {
+  color: var(--premium-navy) !important;
+  letter-spacing: -.5px;
+}
+
+/* Tarjetas */
+.app-main [style*="border-radius: 14px"],
+.app-main [style*="borderRadius: 14px"] {
+  border: 1px solid var(--premium-border);
+  box-shadow: var(--premium-shadow);
+}
+
+/* Botones */
+.app-main button {
+  border-radius: 10px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.app-main button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(20,36,58,.12);
+}
+
+/* Campos */
+.app-main input,
+.app-main select,
+.app-main textarea {
+  border: 1px solid var(--premium-border);
+  border-radius: 10px;
+  padding: 11px 13px;
+  outline: none;
+  transition: .2s ease;
+}
+
+.app-main input:focus,
+.app-main select:focus,
+.app-main textarea:focus {
+  border-color: var(--premium-gold);
+  box-shadow: 0 0 0 3px rgba(201,166,107,.15);
+}
+
+/* Tablas */
+.app-main table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.app-main th {
+  background: #edf1f6;
+  color: var(--premium-navy);
+  font-weight: 700;
+}
+
+.app-main td {
+  border-bottom: 1px solid var(--premium-border);
+}
+
+/* Inicio de sesión */
+.login-screen {
+  background: linear-gradient(
+    135deg,
+    #0e1b2c,
+    #203957
+  ) !important;
+}
+
+.login-card {
+  border: 1px solid rgba(201,166,107,.4);
+  border-radius: 20px !important;
+  box-shadow: 0 18px 50px rgba(0,0,0,.2);
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+  .app-main {
+    padding: 16px !important;
+  }
+
+  .app-header {
+    padding: 16px !important;
+  }
+}
